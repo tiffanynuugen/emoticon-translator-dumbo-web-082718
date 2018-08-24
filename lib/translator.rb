@@ -1,6 +1,6 @@
 require 'yaml'
 
- def load_library	def load_library(yaml_file)
+ def load_library(yaml_file)
   response = {"get_meaning" => {}, "get_emoticon" => {}}
   library = YAML.load_file(yaml_file)
   library.each do |trans, emos|
@@ -10,7 +10,7 @@ require 'yaml'
   response
 end
 
- def get_japanese_emoticon	def get_japanese_emoticon(yaml_file, emoticon)
+ def get_japanese_emoticon(yaml_file, emoticon)
   library = load_library(yaml_file)
   response = nil
   library["get_emoticon"].each do |english, japanese|
@@ -25,7 +25,7 @@ end
   end
 end
 
- def get_english_meaning	def get_english_meaning(yaml_file, emoticon)
+ def get_english_meaning(yaml_file, emoticon)
   library = load_library(yaml_file)
   response = nil
   library["get_meaning"].each do |emo, trans|
@@ -38,4 +38,4 @@ end
   else
     return response
   end
-end 	
+end
